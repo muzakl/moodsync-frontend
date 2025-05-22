@@ -1,0 +1,66 @@
+.mainDiv {
+  box-sizing: border-box;
+  background: #000000;
+  width: 100%;
+  padding: 16px 16px 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .brandHolder {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    h1 {
+      font-family: Inter;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 28px;
+      letter-spacing: 0;
+      color: #FFFFFF;
+    }
+  }
+
+  .navbar {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    .darkButton {
+      cursor: pointer;
+      background: #FFFFFF1A;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 24px;
+
+      p {
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0;
+        text-align: center;
+        color: #FFFFFF;
+      }
+    }
+
+    .lightButton {
+      cursor: pointer;
+      background: #9B59B6;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+
+      p {
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0;
+        text-align: center;
+        color: #FFFFFF;
+      }
+    }
+  }
+}
