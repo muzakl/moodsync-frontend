@@ -1,10 +1,24 @@
 import classes from '../modules/Playlist.module.scss'
 import playlistImg from '../assets/playlist-img.png'
-
+import {useEffect} from "react";
+// import Header from "../components/Header.jsx";
+// import {Footer} from "../components/Footer.jsx";
 const Playlist = () => {
+
+    useEffect(() => {
+        document.body.style.backgroundColor = '#111111';
+
+        return () => {
+            document.body.style.backgroundColor = '';
+        };
+    }, []);
+
+
+
+
     return (
         // <Header/>
-        <div className={classes['playlist']}>
+        <>
             <div className={classes['main-wrapper']}>
                 <div className={classes['title']}>
                     <b>Your Playlists</b>
@@ -59,7 +73,7 @@ const Playlist = () => {
                 </div>
 
             </div>
-        </div>
+        </>
         // <Footer/>
 
     )
