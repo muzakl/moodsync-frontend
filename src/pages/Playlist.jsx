@@ -1,6 +1,6 @@
 import classes from '../modules/Playlist.module.scss'
 import playlistImg from '../assets/playlist-img.png'
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 // import Header from "../components/Header.jsx";
 // import {Footer} from "../components/Footer.jsx";
 const Playlist = () => {
@@ -13,7 +13,8 @@ const Playlist = () => {
         };
     }, []);
 
-
+    const [playlistName, setPlaylistName] = useState('Playlist Name')
+    const [friendsName, setFriendsName] = useState('Friends Name')
 
 
     return (
@@ -32,11 +33,11 @@ const Playlist = () => {
                             <p>img</p>
                         </div>
                         <div className={classes['single-info']}>
-                            <h1>playlist name</h1>
-                            <p>created with friendsName</p>
+                            <h1>{playlistName}</h1>
+                            <p>created with {friendsName}</p>
                             <div className={classes['buttons']}>
                                 <button>Play</button>
-                                <button>edit</button>
+                                <button>Edit</button>
                             </div>
                         </div>
                     </div>
@@ -46,11 +47,11 @@ const Playlist = () => {
                             <p>img</p>
                         </div>
                         <div className={classes['single-info']}>
-                            <h1>playlist name</h1>
-                            <p>created with friendsName</p>
+                            <h1>{playlistName}</h1>
+                            <p>created with {friendsName}</p>
                             <div className={classes['buttons']}>
                                 <button>Play</button>
-                                <button>edit</button>
+                                <button>Edit</button>
                             </div>
                         </div>
                     </div>
@@ -61,11 +62,11 @@ const Playlist = () => {
                             <p>img</p>
                         </div>
                         <div className={classes['single-info']}>
-                            <h1>playlist name</h1>
-                            <p>created with friendsName</p>
+                            <h1>{playlistName}</h1>
+                            <p>created with {friendsName}</p>
                             <div className={classes['buttons']}>
                                 <button>Play</button>
-                                <button>edit</button>
+                                <button>Edit</button>
                             </div>
                         </div>
                     </div>
