@@ -1,6 +1,8 @@
+import CreatePlaylistSection from "./pages/CreatePlaylistSection/index.jsx";
+
 const App = () => {
     return (
-        <h1>MoodSync</h1>
+        <CreatePlaylistSection />
     )
 }
 
