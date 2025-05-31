@@ -38,12 +38,29 @@
     gap: 24px;
     padding: 24px 20px;
 
+    @media (max-width: 450px) {
+      justify-content: center;
+      align-items: center;
+    }
+
     .single-playlist {
       border-radius: 10px;
       padding-left: 24px;
       padding-bottom: 24px;
       padding-top: 24px;
       display: flex;
+      width: 100%;
+
+      @media (max-width: 450px) {
+        justify-content: center;
+        align-items: center;
+        padding-left: 0;
+      }
+
+      @media (max-width: 450px) {
+        flex-direction: column;
+      }
+
       gap: 20px;
       background-color: rgba(105, 105, 105, 0.35);
       position: relative;
@@ -54,6 +71,7 @@
         height: 120px;
         border-radius: 10px;
         overflow: hidden;
+        flex-shrink: 0;
 
         img {
           width: 100%;
@@ -69,7 +87,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-
+        gap: 15px;
 
         h1 {
           font-family: 'Inter', sans-serif;
@@ -91,6 +109,7 @@
         .buttons {
           display: flex;
           gap: 20px;
+          //padding-top: 18px;
 
           button {
             cursor: pointer;
