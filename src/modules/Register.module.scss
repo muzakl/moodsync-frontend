@@ -4,6 +4,7 @@
   justify-content: center;
   width: 100%;
   background: #000000;
+  padding: 20px 0 20px 0;
 
 
   .container {
@@ -11,12 +12,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 500px;
-    height: 630px;
+    padding: 12px 32px 32px 32px;
+    box-sizing: border-box;
     border-radius: 12px;
     background-color: rgb(17, 17, 17);
-    margin-top: 20px;
-    margin-bottom: 20px;
 
     .main {
       display: flex;
