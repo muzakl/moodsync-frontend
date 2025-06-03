@@ -2,12 +2,29 @@ import classes from '../modules/Register.module.scss';
 import line from "../assets/line.svg";
 import spotify from "../assets/spotify.svg";
 import {useState} from "react";
+import { registerUser } from "../../api/auth";
 
 export const Register = () => {
     const [step,setStep] = useState(0);
-    const continueHandler = () => {
-        setStep(step+1);
+    const [form, setForm] = useState({username: '', password: '',confirmPassword: '', });
+    const [error, setError] = useState('');
+    const continueHandler = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await registerUser(form);
+            localStorage.setItem("token", res.data.token);
+        } catch (err) {
+            setError(err.response?.data?.error || "Registration failed.");
+        }
+        if (step === 0 && form.username && form.password && form.confirmPassword) {
+            setStep(step + 1);
+        }
+    };
+    const handleChange = (e) => {
+        setForm({...form, [e.target.name]: e.target.value});
+
     }
+
     return (
         <>
             {step === 0 ? (
@@ -20,11 +37,11 @@ export const Register = () => {
                                 <h1>3</h1>
                             </div>
                             <h1 className={classes["title"]}>Create your account</h1>
+                            {error && <p className={classes["error"]}>{error}</p>}
                             <div className={classes["form"]}>
-                                <input type="text" placeholder="Fullname" className={classes["input"]}/>
-                                <input type="text" placeholder="Username" className={classes["input"]}/>
-                                <input type="password" placeholder="Password" className={classes["input"]}/>
-                                <input type="password" placeholder="Confirm password" className={classes["input"]}/>
+                                <input type="text" placeholder="Username" className={classes["input"]} onChange={handleChange}/>
+                                <input type="password" placeholder="Password" className={classes["input"]} onChange={handleChange}/>
+                                <input type="password" placeholder="Confirm password" className={classes["input"]} onChange={handleChange}/>
                                 <button type="submit" className={classes["continue-btn"]} onClick={continueHandler}>Continue</button>
                             </div>
                         </div>
@@ -54,12 +71,10 @@ export const Register = () => {
                                 <h1>2</h1>
                                 <h1>3</h1>
                             </div>
-                            <h1 className={classes["title"]}>Add your address</h1>
+                            <h1 className={classes["title"]}>Link your Spotify account</h1>
                             <div className={classes["form"]}>
-                                <input type="text" placeholder="Street Address" className={classes["input"]}/>
-                                <input type="text" placeholder="City" className={classes["input"]}/>
-                                <input type="text" placeholder="State/Province" className={classes["input"]}/>
-                                <input type="text" placeholder="Postal Code" className={classes["input"]}/>
+                                <input type="text" placeholder="Username" className={classes["input"]}/>
+                                <input type="text" placeholder="Password" className={classes["input"]}/>
                                 <button type="submit" className={classes["continue-btn"]} onClick={continueHandler}>Continue</button>
                             </div>
                         </div>
@@ -74,11 +89,9 @@ export const Register = () => {
                                 <h1>2</h1>
                                 <h1>3</h1>
                             </div>
-                            <h1 className={classes["title"]}>Complete your profile</h1>
+                            <h1 className={classes["title"]}>Successfully registered</h1>
                             <div className={classes["form"]}>
-                                <input type="text" placeholder="Profile Picture URL" className={classes["input"]}/>
-                                <input type="text" placeholder="Bio" className={classes["input"]}/>
-                                <button type="submit" className={classes["continue-btn"]}>Finish Registration</button>
+                                <button type="submit" className={classes["continue-btn"]}>Back to home</button>
                             </div>
                         </div>
                     </div>
