@@ -1,6 +1,6 @@
-.main-wrapper{
+.main-wrapper {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   padding-top: 83px;
 
   .title {
@@ -8,6 +8,17 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    button {
+      width: 100px;
+      border: 2px solid #9B59B6;
+      border-radius: 20px;
+      height: 30px;
+      background-color: transparent;
+      color: #9B59B6;
+      cursor: pointer;
+    }
+
     @media screen and (max-width: 768px) {
       justify-content: center;
       align-items: center;
@@ -31,12 +42,12 @@
       opacity: 90%;
     }
   }
+
   .playlist-info {
     display: flex;
     flex-direction: column;
     gap: 24px;
     padding: 24px 20px;
-    border: 2px solid blue;
 
     .single-playlist {
       border-radius: 10px;
@@ -71,6 +82,18 @@
         justify-content: flex-start;
         gap: 15px;
 
+        .edit-input {
+          background-color: #222;
+          color: #fff;
+          font-size: 1.2rem;
+          border: 1px solid #444;
+          border-radius: 20px;
+          padding: 6px 10px;
+          width: 100%;
+          max-width: 300px;
+        }
+
+
         h1 {
           font-family: 'Inter', sans-serif;
           color: #FFFFFF;
@@ -91,7 +114,6 @@
         .buttons {
           display: flex;
           gap: 20px;
-          //padding-top: 18px;
 
           button {
             cursor: pointer;
@@ -106,74 +128,113 @@
       }
     }
   }
-.song-info {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 24px 20px;
-  border: 2px solid blue;
 
-  .song-list {
-    border-radius: 10px;
+  .song-info {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    background-color: rgba(105, 105, 105, 0.35);
-    position: relative;
+    gap: 24px;
+    padding: 24px 20px;
+    border-radius: 10px;
 
-    .list-name {
+    .song-list {
+      padding: 24px 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background-color: rgba(105, 105, 105, 0.35);
 
-.list-items{
-  display: flex;
-  padding: 15px 24px;
-  //justify-content: space-between;
-  gap: 350px;
-  border-bottom: 1px solid #c3c2c2;
-  color: #c3c2c2;
-}
-    }
 
-    .song-details-wrapper{
-      padding-bottom: 20px;
-      .song-details{
-        display: flex;
-        gap: 310px;
-        padding-left: 61px;
-        padding-right: 40px;
-        padding-bottom: 16px;
-//justify-content: space-between ;
+      .list-items,
+      .song-row {
+        display: grid;
+        grid-template-columns: 40px 1.5fr 1fr 60px;
+        align-items: center;
+        padding: 15px 24px;
+        border-bottom: 1px solid #c3c2c2;
+        color: #c3c2c2;
+
+
+        p, h4 {
+          margin: 0;
+        }
+
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      .song-row {
         border-bottom: 1px solid white;
-        .song{
+
+        .song-title {
           display: flex;
-          gap: 8px;
+          align-items: center;
+          gap: 12px;
 
           img {
             width: 60px;
             height: 60px;
             object-fit: cover;
             border-radius: 10px;
-            display: block;
+
+            @media (max-width: 768px) {
+              width: 20px;
+              height: 20px;
+            }
+
+            @media (max-width: 480px) {
+              width: 60px;
+              height: 60px;
+            }
           }
-.song-text{
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-  h4{
-    color: #CFCFCF;
-    font-family: 'Inter', sans-serif;
-  }
-  p{
-    color: #c3c2c2;
-  }
-}
+
+          h4 {
+            color: #cfcfcf;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+
+            @media (max-width: 480px) {
+              text-align: left;
+            }
+          }
+
+          p {
+            color: #c3c2c2;
+            font-size: 14px;
+
+            @media (max-width: 768px) {
+              font-size: 12px;
+            }
+
+            @media (max-width: 480px) {
+              text-align: left;
+            }
+          }
+
+          @media (max-width: 768px) {
+            flex-direction: row;
+            gap: 12px;
+          }
+
+          @media (max-width: 480px) {
+            flex-direction: column;
+            align-items: flex-start;
+          }
         }
-        p{
-          color: #c3c2c2;
+
+        @media (max-width: 768px) {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+          padding: 16px;
         }
       }
     }
   }
-}
+
+
 }
 
 

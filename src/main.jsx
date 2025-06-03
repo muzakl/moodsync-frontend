@@ -7,10 +7,9 @@ import CreatePlaylistSection from "./pages/CreatePlaylistSection/index.jsx";
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<CreatePlaylistSection/>}/>
+            <Route index  path="/" element={<CreatePlaylistSection/>}/>
             <Route path="/playlist" element={<Playlist/>}/>
-            <Route path="/playlist-info" element={<PlaylistInfo/>}/>
-            <Route path="/*" element={<Error/>} />
+            <Route path="/playlist/:id" element={<PlaylistInfo />} />            <Route path="/*" element={<Error/>} />
         </Routes>
     </BrowserRouter>
 
