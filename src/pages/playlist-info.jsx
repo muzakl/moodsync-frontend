@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import classes from '../modules/playlist-info.module.scss';
 import playlistImg from "../assets/playlist-img.png";
-import PlaylistCard from "./Playlist-Card.jsx";
+import PlaylistCard from "../components/Playlist-Card.jsx";
 import { mockSongs } from "../api-holder/spotify-music.jsx";
+import Header from "../components/header/Header.jsx";
 
 const PlaylistInfo = () => {
     const navigate = useNavigate();
@@ -52,6 +53,9 @@ const PlaylistInfo = () => {
     };
 
     return (
+        <>
+
+        <Header/>
         <div className={classes['main-wrapper']}>
             <div className={classes['title']}>
                 <b>{playlist.name}</b>
@@ -94,6 +98,7 @@ const PlaylistInfo = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
