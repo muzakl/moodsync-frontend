@@ -1,83 +1,69 @@
-import classes from '../modules/Playlist.module.scss'
-import playlistImg from '../assets/playlist-img.png'
-import {useEffect, useState} from "react";
-import Header from "../components/header/index.jsx";
+import {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router';
+import PlaylistCard from '../components/Playlist-Card.jsx';
+import classes from '../modules/Playlist.module.scss';
+import {defaultPlaylists} from "../api-holder/spotify-music.jsx";
+import Header from "../components/header/Header.jsx";
 
-// import {Footer} from "../components/Footer.jsx";
+
 const Playlist = () => {
+    const navigate = useNavigate();
+    const [playlists, setPlaylists] = useState([]);
+    const [editingId, setEditingId] = useState(null);
 
     useEffect(() => {
         document.body.style.backgroundColor = '#111111';
+        const saved = localStorage.getItem('playlists');
+        if (saved) {
+            setPlaylists(JSON.parse(saved));
+        } else {
+            const initialData = defaultPlaylists;
 
+            setPlaylists(initialData);
+            localStorage.setItem('playlists', JSON.stringify(initialData));
+        }
         return () => {
             document.body.style.backgroundColor = '';
         };
     }, []);
 
-    const [playlistName, setPlaylistName] = useState('Playlist Name')
-    const [friendsName, setFriendsName] = useState('Friends Name')
+    const handlePlaylistClick = (playlist) => {
+        navigate(`/playlist/${playlist.id}`, {state: playlist});
+    };
 
+    const handleStartEdit = (id) => setEditingId(id);
 
-    return (
-        <>
-            <Header/>
-            <div className={classes['main-wrapper']}>
-                <div className={classes['title']}>
-                    <b>Your Playlists</b>
-                    <p>Your personal collection of curated music</p>
-                </div>
-                <div className={classes['main-content']}>
-                    <div className={classes['single-playlist']}>
-                        <div className={classes['single-image']}>
-                            <img src={playlistImg} alt='playlist'/>
-                            <p>img</p>
-                        </div>
-                        <div className={classes['single-info']}>
-                            <h1>{playlistName}</h1>
-                            <p>created with {friendsName}</p>
-                            <div className={classes['buttons']}>
-                                <button>Play</button>
-                                <button>Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes['single-playlist']}>
-                        <div className={classes['single-image']}>
-                            <img src={playlistImg} alt='playlist'/>
-                            <p>img</p>
-                        </div>
-                        <div className={classes['single-info']}>
-                            <h1>{playlistName}</h1>
-                            <p>created with {friendsName}</p>
-                            <div className={classes['buttons']}>
-                                <button>Play</button>
-                                <button>Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes['single-playlist']}>
+    const handleDoneEdit = (id, newName) => {
+        const updated = playlists.map(p => p.id === id ? {...p, name: newName} : p);
+        setPlaylists(updated);
+        localStorage.setItem('playlists', JSON.stringify(updated));
+        setEditingId(null);
+    };
 
-                        <div className={classes['single-image']}>
-                            <img src={playlistImg} alt='playlist'/>
-                            <p>img</p>
-                        </div>
-                        <div className={classes['single-info']}>
-                            <h1>{playlistName}</h1>
-                            <p>created with {friendsName}</p>
-                            <div className={classes['buttons']}>
-                                <button>Play</button>
-                                <button>Edit</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+    return (<>
+        <Header/>
+        <div className={classes['main-wrapper']}>
+            <div className={classes['title']}>
+                <b>Your Playlists</b>
+                <p>Your personal collection of curated music</p>
             </div>
+
+            <div className={classes['main-content']}>
+                {playlists.map(playlist => (
+                    <PlaylistCard
+                        key={playlist.id}
+                        playlist={playlist}
+                        isEditing={editingId === playlist.id}
+                        onClick={handlePlaylistClick}
+                        onStartEdit={handleStartEdit}
+                        onDoneEdit={handleDoneEdit}
+                    />
+                ))}
+            </div>
+        </div>
         </>
-        // <Footer/>
+    );
+};
 
-    )
-}
+export default Playlist;
 
-export default Playlist
