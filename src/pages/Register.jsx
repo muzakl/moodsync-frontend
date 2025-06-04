@@ -6,13 +6,15 @@ import { registerUser } from "../../api/auth";
 
 export const Register = () => {
     const [step,setStep] = useState(0);
-    const [form, setForm] = useState({username: '', password: '',confirmPassword: '', });
+    // const [form, setForm] = useState({username: '', password: '',confirmPassword: '', });
+    const [form, setForm] = useState({username: '', password: '' });
     const [error, setError] = useState('');
     const continueHandler = async (e) => {
         e.preventDefault();
         try {
             const res = await registerUser(form);
             localStorage.setItem("token", res.data.token);
+            console.log(res)
         } catch (err) {
             setError(err.response?.data?.error || "Registration failed.");
         }
@@ -21,7 +23,16 @@ export const Register = () => {
         }
     };
     const handleChange = (e) => {
+        if (e.target.name === 'confirmPassword' && e.target.value !== form.password) {
+            setError("Passwords do not match");
+            return;
+        }else if (e.target.name === 'confirmPassword') {
+            setForm({...form, password: e.target.value,username: form.username});
+
+        }
         setForm({...form, [e.target.name]: e.target.value});
+        console.log(e.target.name, e.target.value);
+        console.log(form)
 
     }
 

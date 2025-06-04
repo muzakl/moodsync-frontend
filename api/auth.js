@@ -1,8 +1,9 @@
 import axios from "axios";
 
-const API = axios.create({
-    baseURL: "http://localhost:5000/api/auth",
-});
+export const loginUser = async (form) => {
+    return axios.post("http://localhost:5000/api/auth/login", form);
+};
 
-export const registerUser = (userData) => API.post("/register", userData);
-export const loginUser = (userData) => API.post("/login", userData);
+export const registerUser = async (form) => {
+    return axios.post("http://localhost:5000/api/auth/register", form);
+};
