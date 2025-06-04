@@ -1,7 +1,7 @@
 import classes from '../modules/Error.module.scss'
 import {Link} from "react-router";
 import {useEffect} from "react";
-// import Header from "../components/Header.jsx";
+import Header from "../components/header/Header.jsx";
 // import {Footer} from "../components/Footer.jsx";
 
 const Error = () => {
@@ -19,7 +19,7 @@ const Error = () => {
 
     return (
         <>
-            {/*<Header/>*/}
+            <Header/>
             <div className={classes['main-wrapper']}>
                 <div className={classes['inside-content']}>
                     <h1>404 Not Found</h1>

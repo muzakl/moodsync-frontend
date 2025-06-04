@@ -1,6 +1,6 @@
 import classes from './styles.module.scss'
 import imageHolder from '../../../public/image_holder.png'
-import Header from "../../components/header/index.jsx";
+import Header from "../../components/header/Header.jsx";
 
 const CreatePlaylistSection = () => {
     return (
