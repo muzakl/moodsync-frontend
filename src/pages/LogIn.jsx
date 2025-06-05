@@ -7,6 +7,7 @@ import facebook from '../assets/facebook.svg'
 import spotify from '../assets/spotify.svg'
 import {useState} from "react";
 import {loginUser} from "../../api/auth.js";
+import Header from "../components/header/Header.jsx";
 export const LogIn = () => {
     const [error, setError] = useState('');
     const [form, setForm] = useState({username: '', password: ''});
@@ -26,6 +27,7 @@ export const LogIn = () => {
 
     return (
         <>
+            <Header></Header>
             <div className={classes["background"]}>
                 <div className={classes["container"]}>
                     <div className={classes["main"]}>

@@ -3,6 +3,7 @@ import line from "../assets/line.svg";
 import spotify from "../assets/spotify.svg";
 import {useState} from "react";
 import { registerUser } from "../../api/auth";
+import Header from "../components/header/Header.jsx";
 
 export const Register = () => {
     const [step,setStep] = useState(0);
@@ -38,6 +39,7 @@ export const Register = () => {
 
     return (
         <>
+            <Header></Header>
             {step === 0 ? (
                 <div className={classes["background"]}>
                     <div className={classes["container"]}>
