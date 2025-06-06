@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router';
 import PlaylistCard from '../components/Playlist-Card.jsx';
 import classes from '../modules/Playlist.module.scss';
 import {defaultPlaylists} from "../api-holder/spotify-music.jsx";
-import Header from "../components/header/Header.jsx";
+import HeaderSign from "../components/Header-signIn.jsx";
 
 
 const Playlist = () => {
@@ -41,7 +41,7 @@ const Playlist = () => {
     };
 
     return (<>
-        <Header/>
+        <HeaderSign/>
         <div className={classes['main-wrapper']}>
             <div className={classes['title']}>
                 <b>Your Playlists</b>
