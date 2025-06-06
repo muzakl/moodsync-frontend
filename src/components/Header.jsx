@@ -38,12 +38,12 @@ export const HeaderSign = () => {
                     </button>
                 </nav>
 
-                <div onClick={toggleBurgerMenu} className={classes['burger-menu-icon']}>
-                    <div className={classes.line}></div>
-                    <div className={classes.line}></div>
-                    <div className={classes.line}></div>
-                </div>
-            </header> :
+                    <div onClick={toggleBurgerMenu} className={classes['burger-menu-icon']}>
+                        <div className={classes['line']}></div>
+                        <div className={classes['line']}></div>
+                        <div className={classes['line']}></div>
+                    </div>
+                </header> :
                 <header className={classes['header-wrapper-mobile']}>
 
                     <div className={classes['brandHolder']} onClick={homePageClick}>

@@ -14,6 +14,10 @@
   align-items: center;
   gap: 80px;
 
+  @media (max-width: 1024px) {
+    padding: 90px 32px 160px 32px;
+  }
+
   .introHolder {
     display: flex;
     flex-direction: column;
@@ -26,8 +30,9 @@
       align-items: center;
       gap: 32px;
 
+
       h1 {
-        font-family: Inter;
+        font-family: 'Inter', sans-serif;
         font-weight: 700;
         font-size: 48px;
         line-height: 60px;
@@ -37,7 +42,7 @@
       }
 
       p {
-        font-family: Inter;
+        font-family: 'Inter', sans-serif;
         font-weight: 400;
         font-size: 20px;
         line-height: 28px;
@@ -84,7 +89,7 @@ cursor: pointer;
         max-width: 380px;
 
         h1 {
-          font-family: Inter;
+          font-family: 'Inter', sans-serif;
           font-weight: 600;
           font-size: 20px;
           line-height: 28px;
@@ -93,7 +98,7 @@ cursor: pointer;
         }
 
         p {
-          font-family: Inter;
+          font-family: 'Inter', sans-serif;
           font-weight: 400;
           font-size: 16px;
           line-height: 24px;
@@ -115,7 +120,7 @@ cursor: pointer;
       gap: 24px;
 
       h1 {
-        font-family: Inter;
+        font-family: 'Inter', sans-serif;
         font-weight: 700;
         font-size: 30px;
         line-height: 36px;
@@ -142,7 +147,7 @@ cursor: pointer;
             background: #9B59B6;
             flex-shrink: 0;
 
-            font-family: Inter;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 16px;
             line-height: 24px;
@@ -156,7 +161,7 @@ cursor: pointer;
             gap: 10px;
 
             h2 {
-              font-family: Inter;
+              font-family: 'Inter', sans-serif;
               font-weight: 600;
               font-size: 16px;
               line-height: 24px;
@@ -165,7 +170,7 @@ cursor: pointer;
             }
 
             p {
-              font-family: Inter;
+              font-family: 'Inter', sans-serif;
               font-weight: 400;
               font-size: 16px;
               line-height: 24px;

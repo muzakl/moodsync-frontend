@@ -75,7 +75,8 @@
     .line {
       width: 25px;
       height: 3px;
-      background-color: rgba(8, 3, 65, 1);
+      background-color: #ffffff;
+
     }
   }
 }
@@ -156,9 +157,10 @@
 
       .line-1,
       .line-2 {
-        background-color: rgba(8, 3, 65, 1);
+        background-color: #ffffff;
         width: 25px;
         height: 3px;
+
       }
 
       .line-1 {
