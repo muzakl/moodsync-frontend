@@ -1,6 +1,7 @@
 import classes from './styles.module.scss'
-import imageHolder from '../../../public/image_holder.png'
+import imageHolder from '../../assets/image_holder.png'
 import Header from "../../components/Header.jsx";
+import {Footer} from "../../components/Footer.jsx";
 
 const CreatePlaylistSection = () => {
     return (
@@ -62,6 +63,7 @@ const CreatePlaylistSection = () => {
                     <img src={imageHolder} alt="image holder"/>
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }

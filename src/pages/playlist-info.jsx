@@ -5,6 +5,7 @@ import playlistImg from "../assets/playlist-img.png";
 import PlaylistCard from "../components/Playlist-Card.jsx";
 import { mockSongs } from "../api-holder/spotify-music.jsx";
 import HeaderSign from "../components/Header-signIn.jsx";
+import {FooterSignIn} from "../components/Footer-signIn.jsx";
 
 const PlaylistInfo = () => {
     const navigate = useNavigate();
@@ -98,6 +99,7 @@ const PlaylistInfo = () => {
                 </div>
             </div>
         </div>
+            <FooterSignIn/>
         </>
     );
 };

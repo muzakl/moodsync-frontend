@@ -4,7 +4,7 @@ import PlaylistCard from '../components/Playlist-Card.jsx';
 import classes from '../modules/Playlist.module.scss';
 import {defaultPlaylists} from "../api-holder/spotify-music.jsx";
 import HeaderSign from "../components/Header-signIn.jsx";
-
+import {FooterSignIn} from "../components/Footer-signIn.jsx";
 
 const Playlist = () => {
     const navigate = useNavigate();
@@ -61,6 +61,7 @@ const Playlist = () => {
                 ))}
             </div>
         </div>
+<FooterSignIn/>
         </>
     );
 };
