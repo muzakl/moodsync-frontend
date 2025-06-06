@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +11,7 @@
   padding: 60px 20px;
   width: 100%;
   position: relative;
-  font-family: SF Pro Display, sans-serif;
+  font-family: 'Inter', sans-serif;
 
   @media (max-width: 768px) {
     padding: 40px 0 20px;
@@ -23,14 +24,17 @@
   .footer-container {
     width: 90%;
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
     display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    text-align: center;
 
-
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       flex-direction: column;
+      gap: 30px;
       align-items: center;
-      text-align: center;
     }
 
     @media (max-width: 480px) {
@@ -41,34 +45,38 @@
       width: 30%;
       margin-bottom: 20px;
 
-      @media (max-width: 768px) {
-        width: 100%;
-        margin-bottom: 40px;
-        padding: 0 20px;
+      @media (max-width: 1024px) {
+        align-items: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
       }
 
       @media (max-width: 480px) {
         padding: 0 10px;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
       }
 
-
       .footer-title {
-          display: flex;
-        justify-content: center;
-          align-items: center;
-          gap: 14px;
-          cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 14px;
         margin-bottom: 20px;
-          h1 {
-            color: #FFFFFF;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            line-height: 32px;
-            letter-spacing: 0;
+        cursor: pointer;
 
-          }
+        h1 {
+          color: #fff;
+          font-family: 'Inter', sans-serif;
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 32px;
+          letter-spacing: 0;
+        }
+
+        img {
+          width: 40px;
+          height: auto;
+        }
 
         @media (max-width: 480px) {
           font-size: 24px;
@@ -78,19 +86,18 @@
 
       .footer-description {
         margin-bottom: 15px;
-        max-width: 90%;
+        max-width: 500px;
         font-weight: 300;
         font-size: 14px;
-        line-height: 32px;
+        line-height: 1.6;
 
         @media (max-width: 768px) {
           max-width: 100%;
-          margin: 0 25px;
+          margin: 0 25px 15px 0;
         }
 
         @media (max-width: 480px) {
           font-size: 14px;
-          margin-bottom: 20px;
         }
       }
 
@@ -105,8 +112,11 @@
         }
       }
 
-      .footer-links {
-        color: #CFCFCF;
+
+        .footer-links {
+          list-style: none;
+          padding: 0;
+          margin: 0;
 
         @media (max-width: 768px) {
           padding-left: 0;
@@ -151,19 +161,27 @@
           }
         }
       }
-
     }
 
     .middle-column {
       padding-left: 20px;
 
-      @media (max-width: 768px) {
-        padding-left: 20px;
+      @media (max-width: 1024px) {
+        padding-left: 0;
       }
 
       @media (max-width: 480px) {
-        padding-left: 10px;
+        padding-left: 0;
       }
+    }
+
+
+    .footer-column:first-child {
+      order: 1;
+    }
+
+    .middle-column {
+      order: 2;
     }
   }
 }

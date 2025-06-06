@@ -15,7 +15,6 @@ export const Footer = () => {
     return (
         <footer className={classes['footer-wrapper']}>
 
-
             <div className={classes['footer-container']}>
                 <div className={classes['footer-column']}>
 
