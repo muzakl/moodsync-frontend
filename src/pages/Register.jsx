@@ -3,39 +3,34 @@ import line from "../assets/line.svg";
 import spotify from "../assets/spotify.svg";
 import {useState} from "react";
 import { registerUser } from "../../api/auth";
-import Header from "../components/header/Header.jsx";
+import Header from "../components/Header.jsx";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import {Footer} from "../components/Footer.jsx";
 
 export const Register = () => {
-    const [step,setStep] = useState(0);
-    // const [form, setForm] = useState({username: '', password: '',confirmPassword: '', });
-    const [form, setForm] = useState({username: '', password: '' });
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [step, setStep] = useState(0);
+    const [userId, setUserId] = useState(null);
     const [error, setError] = useState('');
-    const continueHandler = async (e) => {
-        e.preventDefault();
+    const navigate = useNavigate();
+
+    const continueHandler = async (data) => {
         try {
-            const res = await registerUser(form);
-            localStorage.setItem("token", res.data.token);
-            console.log(res)
+            const res = await registerUser(data);
+            setUserId(res.data.userId);
+            setStep(2);
         } catch (err) {
-            setError(err.response?.data?.error || "Registration failed.");
-        }
-        if (step === 0 && form.username && form.password && form.confirmPassword) {
-            setStep(step + 1);
+            setError(err.response.data.error || "Registration failed");
         }
     };
-    const handleChange = (e) => {
-        if (e.target.name === 'confirmPassword' && e.target.value !== form.password) {
-            setError("Passwords do not match");
-            return;
-        }else if (e.target.name === 'confirmPassword') {
-            setForm({...form, password: e.target.value,username: form.username});
-
-        }
-        setForm({...form, [e.target.name]: e.target.value});
-        console.log(e.target.name, e.target.value);
-        console.log(form)
-
-    }
+    const handleSpotifyLink = () => {
+        const redirectUri = encodeURIComponent("http://localhost:5000/spotify/callback");
+        const clientId = "<YOUR_SPOTIFY_CLIENT_ID>";
+        const scope = encodeURIComponent("user-read-private user-read-email");
+        const authUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&state=${userId}`;
+        window.location.href = authUrl;
+    };
 
     return (
         <>
@@ -52,9 +47,8 @@ export const Register = () => {
                             <h1 className={classes["title"]}>Create your account</h1>
                             {error && <p className={classes["error"]}>{error}</p>}
                             <div className={classes["form"]}>
-                                <input type="text" placeholder="Username" className={classes["input"]} onChange={handleChange}/>
-                                <input type="password" placeholder="Password" className={classes["input"]} onChange={handleChange}/>
-                                <input type="password" placeholder="Confirm password" className={classes["input"]} onChange={handleChange}/>
+                                <input type="text" placeholder="Username" className={classes["input"]} {...register("username", { required: true })}/>
+                                <input type="password" placeholder="Password" className={classes["input"]}{...register("password", { required: true, minLength: 6 })}/>
                                 <button type="submit" className={classes["continue-btn"]} onClick={continueHandler}>Continue</button>
                             </div>
                         </div>
@@ -88,7 +82,7 @@ export const Register = () => {
                             <div className={classes["form"]}>
                                 <input type="text" placeholder="Username" className={classes["input"]}/>
                                 <input type="text" placeholder="Password" className={classes["input"]}/>
-                                <button type="submit" className={classes["continue-btn"]} onClick={continueHandler}>Continue</button>
+                                <button type="submit" className={classes["continue-btn"]} onClick={handleSpotifyLink}>Continue</button>
                             </div>
                         </div>
                     </div>
@@ -111,6 +105,7 @@ export const Register = () => {
                 </div>
             )
             }
+            <Footer></Footer>
         </>
     )
 }

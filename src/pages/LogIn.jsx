@@ -7,7 +7,8 @@ import facebook from '../assets/facebook.svg'
 import spotify from '../assets/spotify.svg'
 import {useState} from "react";
 import {loginUser} from "../../api/auth.js";
-import Header from "../components/header/Header.jsx";
+import Header from "../components/Header.jsx";
+import {Footer} from "../components/Footer.jsx";
 export const LogIn = () => {
     const [error, setError] = useState('');
     const [form, setForm] = useState({username: '', password: ''});
@@ -67,7 +68,7 @@ export const LogIn = () => {
                     </div>
                 </div>
             </div>
-
+            <Footer></Footer>
         </>
 
     );
