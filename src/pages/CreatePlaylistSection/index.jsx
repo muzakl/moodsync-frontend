@@ -1,8 +1,19 @@
 import classes from './styles.module.scss'
-import imageHolder from '../../../public/image_holder.png'
-import Header from "../../components/header/Header.jsx";
+import imageHolder from '../../assets/image_holder.png'
+import Header from "../../components/Header.jsx";
+import {Footer} from "../../components/Footer.jsx";
+import {useEffect} from "react";
 
 const CreatePlaylistSection = () => {
+
+    useEffect(() => {
+        document.body.style.backgroundColor = '#111111';
+
+        return () => {
+            document.body.style.backgroundColor = '';
+        };
+    }, []);
+
     return (
         <>
             <Header/>
@@ -62,6 +73,7 @@ const CreatePlaylistSection = () => {
                     <img src={imageHolder} alt="image holder"/>
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }

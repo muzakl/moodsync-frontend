@@ -4,7 +4,8 @@ import classes from '../modules/playlist-info.module.scss';
 import playlistImg from "../assets/playlist-img.png";
 import PlaylistCard from "../components/Playlist-Card.jsx";
 import { mockSongs } from "../api-holder/spotify-music.jsx";
-import Header from "../components/header/Header.jsx";
+import HeaderSign from "../components/Header-signIn.jsx";
+import {FooterSignIn} from "../components/Footer-signIn.jsx";
 
 const PlaylistInfo = () => {
     const navigate = useNavigate();
@@ -55,7 +56,7 @@ const PlaylistInfo = () => {
     return (
         <>
 
-        <Header/>
+        <HeaderSign/>
         <div className={classes['main-wrapper']}>
             <div className={classes['title']}>
                 <b>{playlist.name}</b>
@@ -98,6 +99,7 @@ const PlaylistInfo = () => {
                 </div>
             </div>
         </div>
+            <FooterSignIn/>
         </>
     );
 };
