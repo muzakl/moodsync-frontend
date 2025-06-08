@@ -12,15 +12,15 @@ API.interceptors.request.use((config) => {
     return config;
 });
 
-export const registerUser = async (form) => {
-    try {
-        const response = await API.post("/register", form);
-        return response.data;
-    } catch (err) {
-        throw err.response?.data || { error: "Registration failed" };
-    }
-};
 
+export const registerUser = async (userData) => {
+    const res = await axios.post("http://localhost:5000/api/auth/register", userData, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    return res.data;
+};
 export const loginUser = async (form) => {
     try {
         const response = await API.post("/login", form);

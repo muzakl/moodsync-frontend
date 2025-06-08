@@ -1,76 +1,114 @@
-
-import classes from '../modules/LogIn.module.scss';
-import line  from '../assets/line.svg'
-import github from '../assets/github.svg'
-import google from '../assets/google.svg'
-import facebook from '../assets/facebook.svg'
-import spotify from '../assets/spotify.svg'
-import {useState} from "react";
-import {loginUser} from "../../api/auth.js";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../api/auth.js";
 import Header from "../components/Header.jsx";
 import {Footer} from "../components/Footer.jsx";
+import classes from "../modules/LogIn.module.scss";
+import line from "../assets/line.svg";
+import spotify from "../assets/spotify.svg";
+import google from "../assets/google.svg";
+import github from "../assets/github.svg";
+import facebook from "../assets/facebook.svg";
 export const LogIn = () => {
     const [error, setError] = useState('');
-    const [form, setForm] = useState({username: '', password: ''});
+    const [form, setForm] = useState({ username: '', password: '' });
+    const navigate = useNavigate();
+
     const changeHandler = (e) => {
-        setForm({...form, [e.target.name]: e.target.value});
-    }
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
     const continueHandler = async (e) => {
         e.preventDefault();
         try {
+            console.log("Submitting login with:", form);
             const res = await loginUser(form);
-            localStorage.setItem("token", res.data.token);
+            const token = res?.token;
+            console.log("Token received:", token);
+
+            if (!token) {
+                throw new Error("No token received");
+            }
+
+            localStorage.setItem("token", token);
+            console.log("Token saved. Navigating now...");
+            navigate("/playlist");
         } catch (err) {
-            setError(err.response?.data?.error || "Login failed.");
+            console.error("Login failed:", err);
+            setError(err.error || "Login failed");
         }
     };
 
+    const handleGoogleLogin = () => {
+        window.location.href = "http://localhost:5000/api/auth/google";
+    };
+
+
+    const handleSpotifyLogin = () => {
+        window.location.href = "http://localhost:5000/api/auth/spotify/login";
+    };
 
     return (
         <>
-            <Header></Header>
+            <Header />
             <div className={classes["background"]}>
                 <div className={classes["container"]}>
                     <div className={classes["main"]}>
                         <h1 className={classes["title"]}>Log In</h1>
                         {error && <p className={classes["error"]}>{error}</p>}
-                        <div className={classes["form"]}>
-                            <input type="text" placeholder="Username" className={classes["input"]} onChange={changeHandler}/>
-                            <input type="password" placeholder="Password" className={classes["input"]}  onChange={changeHandler}/>
-                            <button type="submit" className={classes["continue-btn"]} onClick={continueHandler}>Continue</button>
-                        </div>
+                        <form className={classes["form"]} onSubmit={continueHandler}>
+                            <input
+                                type="text"
+                                name="username"
+                                placeholder="Username"
+                                className={classes["input"]}
+                                onChange={changeHandler}
+                                required
+                            />
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                className={classes["input"]}
+                                onChange={changeHandler}
+                                required
+                            />
+                            <button type="submit" className={classes["continue-btn"]}>
+                                Continue
+                            </button>
+                        </form>
                     </div>
+
                     <div className={classes["extra"]}>
                         <div className={classes["extra-text"]}>
-                            <img src={line} alt="line" className={classes["line"]}/>
+                            <img src={line} alt="line" className={classes["line"]} />
                             <p className={classes["text"]}>or</p>
-                            <img src={line} alt="line" className={classes["line"]}/>
+                            <img src={line} alt="line" className={classes["line"]} />
                         </div>
+
                         <div className={classes["socials"]}>
                             <div className={classes["socials-items"]}>
                                 <div className={classes["socials-item"]}>
-                                    <img src={github} alt="line" className={classes["socials-img"]}/>
+                                    <img src={github} alt="GitHub" className={classes["socials-img"]} />
+                                </div>
+                                <div className={classes["socials-item"]} onClick={handleGoogleLogin}>
+                                    <img src={google} alt="Google" className={classes["socials-img"]} />
                                 </div>
                                 <div className={classes["socials-item"]}>
-                                    <img src={google} alt="line" className={classes["socials-img"]}/>
-                                </div>
-                                <div className={classes["socials-item"]}>
-                                    <img src={facebook} alt="line" className={classes["socials-img"]}/>
+                                    <img src={facebook} alt="Facebook" className={classes["socials-img"]} />
                                 </div>
                             </div>
                             <div>
-                                <button className={classes["continue-spt"]}><img src={spotify} alt={"spotify"}/>Continue
-                                    with Spotify
+                                <button onClick={handleSpotifyLogin} className={classes["continue-spt"]}>
+                                    <img src={spotify} alt="Spotify" />
+                                    Continue with Spotify
                                 </button>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-            <Footer></Footer>
+            <Footer />
         </>
-
     );
-
-}
+};

@@ -27,7 +27,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 80px;
+        gap: 8px;
         h1{
           color: #FFFFFF;
           border-radius: 50%;
@@ -45,7 +45,19 @@
         color: #FFFFFF;
         font-family: 'Inter', sans-serif;
         font-weight: 600;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
+        align-self: center;
+        width: 100%;
+      }
+      .error{
+        font-size: 32px;
+        color: #fcfcfc;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        align-items: center;
+        text-align: center;
+        align-self: center;
         width: 100%;
       }
 
@@ -79,6 +91,10 @@
           background-color: #9B59B6;
           padding-top: 12px;
           padding-bottom: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
 
           &:hover {
             background-color: #FFFFFF;

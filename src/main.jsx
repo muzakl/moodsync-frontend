@@ -6,6 +6,8 @@ import PlaylistInfo from "./pages/playlist-info.jsx";
 import CreatePlaylistSection from "./pages/CreatePlaylistSection/index.jsx";
 import {Register} from "./pages/Register.jsx";
 import {LogIn} from "./pages/LogIn.jsx";
+import {GoogleLinkedPage} from "./pages/GoogleLinkedPage.jsx";
+import {SpotifyRedirect} from "./pages/SpotifyRedirect.jsx";
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
         <Routes>
@@ -15,6 +17,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/*" element={<Error/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/login" element={<LogIn/>} />
+            <Route path="/google-linked" element={<GoogleLinkedPage />} />
+            <Route path="/spotify-linked" element={<SpotifyRedirect />} />
         </Routes>
     </BrowserRouter>
 
