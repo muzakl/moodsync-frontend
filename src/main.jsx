@@ -4,12 +4,16 @@ import Playlist from "./pages/Playlist.jsx";
 import Error from './pages/Error.jsx'
 import PlaylistInfo from "./pages/playlist-info.jsx";
 import CreatePlaylistSection from "./pages/CreatePlaylistSection/index.jsx";
+import FriendsPage from "./pages/FriendsPage/index.jsx"
+
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
         <Routes>
             <Route index  path="/" element={<CreatePlaylistSection/>}/>
             <Route path="/playlist" element={<Playlist/>}/>
-            <Route path="/playlist/:id" element={<PlaylistInfo />} />            <Route path="/*" element={<Error/>} />
+            <Route path="/playlist/:id" element={<PlaylistInfo />} />            
+            <Route path="/*" element={<Error/>} />
+            <Route path="/friends" element={<FriendsPage />} />
         </Routes>
     </BrowserRouter>
 
