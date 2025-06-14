@@ -1,41 +1,150 @@
 .mainDiv {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  padding: 32px 60px 133px 60px;
+  display: flex;
+  flex-direction: column;
+  background: #1A1A1A;
+  gap: 32px;
+
+  .textHolder {
     display: flex;
     flex-direction: column;
-    background: #1A1A1A;
-    padding: 40px 60px 133px 60px;
+    gap: 25px;
 
-    .textHolder {
+    h1 {
+      font-family: Inter;
+      font-weight: bold;
+      font-size: 48px;
+      text-align: left;
+      line-height: 72px;
+      color: #FFFFFF;
+    }
+
+    p {
+      font-family: Inter;
+      font-size: 20px;
+      text-align: left;
+      line-height: 30px;
+      color: #CFCFCF;
+    }
+  }
+
+  .bigContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    .firstWrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .inputWrapper {
+        display: flex;
+        padding: 14px 12px 14px 20px;
+        background: #FFFFFF1A;
+        border: 1px solid #FFFFFF1A;
+        width: 400px;
+        align-items: center;
+        border-radius: 8px;
+
+        input {
+          background: none;
+          border: none;
+          width: 100%;
+
+          font-family: Inter;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: 0;
+          vertical-align: middle;
+          color: #FFFFFF;
+        }
+
+        input::placeholder {
+          font-family: Inter;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: 0;
+          vertical-align: middle;
+          color: #FFFFFF;
+        }
+
+        input:focus {
+          outline: none;
+        }
+      }
+
+      .buttonWrapper {
+        display: flex;
+        width: 160px;
+        padding: 14px 20px 12px 24px;
+        background: #9B59B6;
+        border-radius: 8px;
+        gap: 8px;
+        align-items: center;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        button {
+          background: none;
+          border: none;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          font-family: Inter;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: 0;
+          text-align: center;
+          color: #FFFFFF;
+        }
+      }
+    }
+
+    .secondWrapper {
+      display: flex;
+      flex-direction: column;
+      background: #FFFFFF1A;
+
+      .headerWrapper {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        padding: 24px 0 25px 24px;
+        gap: 10px;
+        border-bottom: 1px solid #FFFFFF1A;
 
         h1 {
-            font-family: Inter;
-            font-weight: 700;
-            font-size: 48px;
-            line-height: 72px;
-            letter-spacing: 0%;
-            color: #FFFFFF;
+          font-family: Inter;
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 36px;
+          letter-spacing: 0;
+          color: #FFFFFF;
         }
 
         p {
-            font-family: Inter;
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 30px;
-            letter-spacing: 0%;
-            color: #CFCFCF;
+          font-family: Inter;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 21px;
+          letter-spacing: 0;
+          color: #CFCFCF;
         }
-    }
+      }
 
-    .listHolder {
-        .inputHolder {
-            display: flex;
-            padding: 14px 12px 14px 20px;
-            justify-content: space-between;
-            align-items: center;
-        }
+      .friendsWrapper {
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
     }
+  }
 }

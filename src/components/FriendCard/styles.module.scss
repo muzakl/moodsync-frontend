@@ -1,0 +1,61 @@
+.card {
+  padding: 20px 24px 20px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFFFFF0D;
+  border-radius: 8px;
+
+  .detailHolder {
+    display: flex;
+    gap: 16px;
+
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+    }
+
+    .textHolder {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      h1 {
+        font-family: Inter;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0;
+        color: #FFFFFF;
+      }
+
+      h2 {
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0;
+        color: #CFCFCF;
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+
+      p {
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: 0;
+        color: #A7A7A7;
+      }
+    }
+  }
+
+  img:hover {
+    cursor: pointer;
+  }
+}
